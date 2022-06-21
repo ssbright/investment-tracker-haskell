@@ -10,6 +10,16 @@
   (major1) == 0 && (major2) <  1 || \
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 #endif /* MIN_VERSION_investment_tracker_haskell */
+/* package aeson-2.1.0.0 */
+#ifndef VERSION_aeson
+#define VERSION_aeson "2.1.0.0"
+#endif /* VERSION_aeson */
+#ifndef MIN_VERSION_aeson
+#define MIN_VERSION_aeson(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  1 || \
+  (major1) == 2 && (major2) == 1 && (minor) <= 0)
+#endif /* MIN_VERSION_aeson */
 /* package base-4.14.3.0 */
 #ifndef VERSION_base
 #define VERSION_base "4.14.3.0"
@@ -20,6 +30,16 @@
   (major1) == 4 && (major2) <  14 || \
   (major1) == 4 && (major2) == 14 && (minor) <= 3)
 #endif /* MIN_VERSION_base */
+/* package req-3.12.0 */
+#ifndef VERSION_req
+#define VERSION_req "3.12.0"
+#endif /* VERSION_req */
+#ifndef MIN_VERSION_req
+#define MIN_VERSION_req(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  12 || \
+  (major1) == 3 && (major2) == 12 && (minor) <= 0)
+#endif /* MIN_VERSION_req */
 
 /* tool gcc-13.1.6 */
 #ifndef TOOL_VERSION_gcc
