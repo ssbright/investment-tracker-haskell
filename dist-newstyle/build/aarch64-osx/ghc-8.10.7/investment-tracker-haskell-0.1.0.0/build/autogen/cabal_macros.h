@@ -30,6 +30,16 @@
   (major1) == 4 && (major2) <  14 || \
   (major1) == 4 && (major2) == 14 && (minor) <= 3)
 #endif /* MIN_VERSION_base */
+/* package bytestring-0.10.12.0 */
+#ifndef VERSION_bytestring
+#define VERSION_bytestring "0.10.12.0"
+#endif /* VERSION_bytestring */
+#ifndef MIN_VERSION_bytestring
+#define MIN_VERSION_bytestring(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  10 || \
+  (major1) == 0 && (major2) == 10 && (minor) <= 12)
+#endif /* MIN_VERSION_bytestring */
 /* package req-3.12.0 */
 #ifndef VERSION_req
 #define VERSION_req "3.12.0"
@@ -40,6 +50,16 @@
   (major1) == 3 && (major2) <  12 || \
   (major1) == 3 && (major2) == 12 && (minor) <= 0)
 #endif /* MIN_VERSION_req */
+/* package text-1.2.4.1 */
+#ifndef VERSION_text
+#define VERSION_text "1.2.4.1"
+#endif /* VERSION_text */
+#ifndef MIN_VERSION_text
+#define MIN_VERSION_text(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  2 || \
+  (major1) == 1 && (major2) == 2 && (minor) <= 4)
+#endif /* MIN_VERSION_text */
 
 /* tool gcc-13.1.6 */
 #ifndef TOOL_VERSION_gcc
