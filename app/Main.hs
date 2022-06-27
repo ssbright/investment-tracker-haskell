@@ -1,5 +1,6 @@
 {-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveDataTypeable #-}
 
 module Main where
 
@@ -13,7 +14,12 @@ import Data.Maybe
 import Data.Dates
 import Control.Monad 
 
+
+
+
 import Request (getRequest)
+import Csv (csv)
+
 
 testTable :: [([Char], Int, Int)]
 testTable = [("5/11/96", 1, 100), ("5/11/96", 2, 200)]
@@ -49,9 +55,18 @@ calcCurrValue p (x:xs) = case (x:xs) of [] -> 0
 --addToTracker :: (DateTime, Int, Int) -> (DateTime, Int, Int)
 --addToTracker d amt p [ds, amts, ps] =  [(d, amt, p) : (ds, amts, ps)]
 
+
+
+
+
+
+
+
 main :: IO ()
 main = do 
+
     getRequest
+    csv  
     let
         value = calcCurrValue 1000 testTable
         valueString =  "Your current portfolio value is " ++ show value 

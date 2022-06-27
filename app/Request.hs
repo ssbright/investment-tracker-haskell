@@ -21,7 +21,5 @@ getRequest :: IO ()
 getRequest = runReq defaultHttpConfig $ do
     bs <- req GET (https "api.coingecko.com" /: "api" /: "v3" /: "simple" /: "price") NoReqBody bsResponse $
         "ids" =: ("Bitcoin" :: Text)                                  <>
-        "vs_currencies" =: ("USD" :: Text)                        
+        "vs_currencies" =: ("USD" :: Text)                
     liftIO $ B.putStrLn (responseBody bs)
-
-
