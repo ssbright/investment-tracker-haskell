@@ -9,7 +9,7 @@ import Data.Csv
 
 data Invest =
     Invest String String String 
-    deriving Show 
+    deriving (Show, Eq) 
 
 instance FromNamedRecord Invest where
     parseNamedRecord x = Invest <$> (x .: "Date") <*> (x .: "BTC") <*> (x .: "$")

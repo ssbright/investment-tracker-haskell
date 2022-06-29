@@ -6,7 +6,7 @@ extra-source-files: CHANGELOG.md
 library
   hs-source-dirs:     app 
   exposed-modules:    Main, Csv, Request, Add_Invest
-  build-depends:      aeson , base , req, bytestring, text, dates, cassava, vector, json 
+  build-depends:      aeson , base , req, bytestring, text, dates, cassava, vector, json, utf8-string, bytestring  
   default-language:    Haskell2010
   ghc-options:         -Wall -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-strictness -fno-spec-constr -fno-specialise
 
@@ -43,7 +43,7 @@ executable main
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.14.3.0, aeson, req, bytestring, text, dates, cassava, vector, json
+    build-depends:    base ^>=4.14.3.0, investment-tracker-haskell, aeson, req, bytestring, text, dates, cassava, vector, json, utf8-string, bytestring 
     hs-source-dirs:   app
     default-language: Haskell2010
 
@@ -55,7 +55,7 @@ executable add_invest
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.14.3.0, aeson, req, bytestring, text, dates, cassava, vector 
+    build-depends:    base ^>=4.14.3.0, investment-tracker-haskell, aeson, req, bytestring, text, dates, cassava, vector, utf8-string, bytestring 
     hs-source-dirs:   app
     default-language: Haskell2010
 

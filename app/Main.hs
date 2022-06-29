@@ -15,47 +15,22 @@ import Data.Dates
 import Control.Monad 
 import qualified Data.Vector as V
 
-import Csv 
+
 
 
 
 import Request (getRequest)
-import Csv (csv)
-
+import Csv 
 
 testTable :: [([Char], Int, Int)]
 testTable = [("5/11/96", 1, 100), ("5/11/96", 2, 200)]
 
-showDetails :: [([Char], Int, Int)] -> String
-showDetails (x:xs) = case (x:xs) of [] -> "No Data in Table"
-                                    [x]  ->
-                                        let 
-                                            (date, amt, price) = x 
-                                        in 
-                                            "On the date of " ++ date  ++ ", you purchased " ++ show amt ++ " Bitcoin worth $" ++ show price ++ ". "
-                                    x : xs ->
-                                        let 
-                                            (date, amt, price) = x 
-                                        in      
-                                            "On the date of " ++ date  ++ ", you purchased " ++ show amt ++ " Bitcoin worth $" ++ show price ++  ". " ++ 
-                                            showDetails xs
-
-calcCurrValue :: Int -> [([Char], Int, Int)] -> Int 
-calcCurrValue p (x:xs) = case (x:xs) of [] -> 0
-                                        [x]  ->
-                                            let 
-                                                (_, amt, _) = x 
-                                            in 
-                                                amt * p 
-                                        x : xs ->
-                                            let 
-                                                (date, amt, price) = x 
-                                            in      
-                                                (amt * p)  +
-                                                calcCurrValue p xs
-
---addToTracker :: (DateTime, Int, Int) -> (DateTime, Int, Int)
---addToTracker d amt p [ds, amts, ps] =  [(d, amt, p) : (ds, amts, ps)]
+{-- 
+calcCurrValue :: Int -> Invest -> Int 
+calcCurrValue p [] = 0
+calcCurrValue p (Invest date amt price) = (read amt :: Int ) * p 
+calcCurrValue p (Invest date amt price:xs) = ((read amt :: Int ) * p)  + calcCurrValue p xs
+--}
 
 showDetails' :: Invest -> String
 showDetails'(Invest date amt price) = "On the date of " ++ date  ++ ", you purchased " ++  amt ++ " Bitcoin worth $" ++ price ++ ". " ++ "\n"
@@ -72,11 +47,14 @@ main = do
     request <- getRequest
     table <- csv
     let table' = V.toList table 
- 
-    let
-        value = calcCurrValue 1000 testTable
-        valueString =  "Your current portfolio value is " ++ show value 
-    --putStrLn $ showDetails testTable
+
+--    let
+--        value = map calcCurrValue $ 1000 table'
+--        valueString =  "Your current portfolio value is " ++ show value 
     putStrLn . concat . map showDetails' $ table'
-    putStrLn valueString
+--    putStrLn valueString
+    print table'
+    print 7
+    putStrLn request 
+
 
