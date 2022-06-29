@@ -18,6 +18,8 @@ instance FromNamedRecord Invest where
 -- 1,2
 -- 3,4
 
+makeList xs = V.toList xs
+
 testTable :: [([Char], Int, Int)]
 testTable = [("5/11/96", 1, 100), ("5/11/96", 2, 200)]
 
@@ -27,5 +29,7 @@ csv = do
     case decodeByName f of
         Left err      -> print err
         Right (_, xs) -> V.forM_ xs $ \(Invest x y z) -> print (x, y, z)
+
+
     -- 1,2
     -- 3,4

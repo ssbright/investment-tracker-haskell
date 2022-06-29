@@ -65,8 +65,9 @@ calcCurrValue p (x:xs) = case (x:xs) of [] -> 0
 main :: IO ()
 main = do 
 
+    csv 
     getRequest
-    csv  
+ 
     let
         value = calcCurrValue 1000 testTable
         valueString =  "Your current portfolio value is " ++ show value 
