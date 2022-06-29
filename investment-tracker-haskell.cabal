@@ -5,7 +5,7 @@ extra-source-files: CHANGELOG.md
 
 library
   hs-source-dirs:     app 
-  exposed-modules:    Main
+  exposed-modules:    Main, Csv, Request, Add_Invest
   build-depends:      aeson , base , req, bytestring, text, dates, cassava, vector, json 
   default-language:    Haskell2010
   ghc-options:         -Wall -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-strictness -fno-spec-constr -fno-specialise

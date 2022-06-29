@@ -13,7 +13,9 @@ import Data.Aeson
 import Data.Maybe
 import Data.Dates
 import Control.Monad 
+import qualified Data.Vector as V
 
+import Csv 
 
 
 
@@ -55,6 +57,8 @@ calcCurrValue p (x:xs) = case (x:xs) of [] -> 0
 --addToTracker :: (DateTime, Int, Int) -> (DateTime, Int, Int)
 --addToTracker d amt p [ds, amts, ps] =  [(d, amt, p) : (ds, amts, ps)]
 
+showDetails' :: Invest -> String
+showDetails'(Invest date amt price) = "On the date of " ++ date  ++ ", you purchased " ++  amt ++ " Bitcoin worth $" ++ price ++ ". " ++ "\n"
 
 
 
@@ -65,11 +69,14 @@ calcCurrValue p (x:xs) = case (x:xs) of [] -> 0
 main :: IO ()
 main = do 
 
-    csv 
-    getRequest
+    request <- getRequest
+    table <- csv
+    let table' = V.toList table 
  
     let
         value = calcCurrValue 1000 testTable
         valueString =  "Your current portfolio value is " ++ show value 
-    putStrLn $ showDetails testTable
+    --putStrLn $ showDetails testTable
+    putStrLn . concat . map showDetails' $ table'
     putStrLn valueString
+
