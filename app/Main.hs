@@ -15,10 +15,7 @@ import Data.Dates
 import Control.Monad 
 import qualified Data.Vector as V
 
-
-
-
-
+--Local Imports 
 import Request (getRequest)
 import Csv 
 
