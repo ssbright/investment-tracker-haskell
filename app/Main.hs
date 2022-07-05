@@ -3,16 +3,6 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
 module Main where
-
-
-import Network.HTTP.Req
-import Control.Monad.IO.Class 
-import qualified Data.ByteString.Char8 as B
-import Data.Text (Text)
-import Data.Aeson
-import Data.Maybe
-import Data.Dates
-import Control.Monad 
 import qualified Data.Vector as V
 
 --Local Imports 

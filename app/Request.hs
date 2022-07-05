@@ -27,6 +27,6 @@ getRequest = runReq defaultHttpConfig $ do
         "ids" =: ("Bitcoin" :: Text)                                  <>
         "vs_currencies" =: ("USD" :: Text)                
     let price = BLU.toString  . BL.fromStrict . B.takeWhile isNumber . B.drop 18 $ (responseBody bs) 
-            --liftIO $ B.putStrLn . B.drop 18 $ (responseBody bs)
+
     return price 
 
