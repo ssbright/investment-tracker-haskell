@@ -22,12 +22,12 @@ import Csv
 testTable :: [([Char], Int, Int)]
 testTable = [("5/11/96", 1, 100), ("5/11/96", 2, 200)]
 
-{-- 
-calcCurrValue :: Int -> Invest -> Int 
-calcCurrValue p [] = 0
-calcCurrValue p (Invest date amt price) = (read amt :: Int ) * p 
-calcCurrValue p (Invest date amt price:xs) = ((read amt :: Int ) * p)  + calcCurrValue p xs
---}
+
+calcCurrValue :: Float -> [Invest] -> Float
+calcCurrValue _ [] = 0
+calcCurrValue p [Invest _ amt _] = (read amt :: Float ) * p 
+calcCurrValue p (Invest _ amt _:xs) = ((read amt :: Float ) * p)  + calcCurrValue p xs
+
 
 showDetails' :: Invest -> String
 showDetails'(Invest date amt price) = "On the date of " ++ date  ++ ", you purchased " ++  amt ++ " Bitcoin worth $" ++ price ++ ". " ++ "\n"
@@ -41,17 +41,16 @@ showDetails'(Invest date amt price) = "On the date of " ++ date  ++ ", you purch
 main :: IO ()
 main = do 
 
-    request <- getRequest
+    price <- getRequest
     table <- csv
     let table' = V.toList table 
-
---    let
---        value = map calcCurrValue $ 1000 table'
---        valueString =  "Your current portfolio value is " ++ show value 
+        value = calcCurrValue (read price :: Float) table'
+        valueString =  "Your current portfolio value is " ++ show value 
     putStrLn . concat . map showDetails' $ table'
---    putStrLn valueString
-    print table'
-    print 7
-    putStrLn request 
+    putStrLn valueString
+
+
+ 
+
 
 
